@@ -1,4 +1,4 @@
-package org.example.join;
+package org.multihread.join;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

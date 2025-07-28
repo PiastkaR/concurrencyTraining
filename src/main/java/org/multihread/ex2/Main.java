@@ -1,4 +1,4 @@
-package org.example.ex2;
+package org.multihread.ex2;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package org.example.blocking;
+package org.multihread.blocking;
 
 import java.math.BigInteger;
 

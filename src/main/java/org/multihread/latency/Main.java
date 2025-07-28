@@ -1,4 +1,4 @@
-package org.example.imageProcessing;
+package org.multihread.latency;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

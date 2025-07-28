@@ -1,4 +1,4 @@
-package org.example.interruption;
+package org.multihread.interruption;
 
 public class Main {
     public static void main(String[] args) {

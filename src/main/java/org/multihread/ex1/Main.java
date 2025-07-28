@@ -1,4 +1,4 @@
-package org.example.ex1;
+package org.multihread.ex1;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
