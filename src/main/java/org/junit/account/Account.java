@@ -1,9 +1,7 @@
-package org.junit;
+package org.junit.account;
 
 public class Account {
     private boolean active;
-
-
     private String email;
     private Address defaultAddress;
 

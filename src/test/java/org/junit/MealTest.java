@@ -1,5 +1,8 @@
 package org.junit;
 
+import org.junit.cart.Cart;
+import org.junit.cart.CartHandler;
+import org.junit.extensions.IAExceptionIgnoreExtension;
 import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -10,6 +13,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.order.Order;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,8 +36,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.doCallRealMethod;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 
 class MealTest {
+    @Spy
+    private Meal mealSpy;
 
     @Test
     void shouldReturnDiscountedPrice() {
@@ -123,7 +137,7 @@ class MealTest {
         );
     }
 
-   @Tag("Fries")
+    @Tag("Fries")
     @TestFactory
     Collection<DynamicTest> calcualteMealPrices() {
         Order order = new Order();
@@ -143,6 +157,51 @@ class MealTest {
             dynamicTests.add(dynamicTest);
         }
         return dynamicTests;
+    }
+
+    @Test
+    void testSumPrice() {
+        //given
+        Meal meal = mock(Meal.class);
+        given(meal.getPrice()).willReturn(15);
+        given(meal.getQuantity()).willReturn(3);
+        given(meal.sumPrice()).willCallRealMethod();//wywola metode nie mocka!
+        //when
+        int result = meal.sumPrice();
+        assertThat(result, equalTo(45));
+    }
+
+    @Test
+    void deliveryShouldBeFree() {
+        //given
+        Cart cart = new Cart();
+        cart.addOrderToCart(new Order());
+        cart.addOrderToCart(new Order());
+        cart.addOrderToCart(new Order());
+        CartHandler cartHandler = mock(CartHandler.class);
+        doCallRealMethod().when(cartHandler).isDeliveryFree(cart);
+//        given(cartHandler.isDeliveryFree(cart)).willCallRealMethod();
+        //when
+        boolean isDeliveryFree = cartHandler.isDeliveryFree(cart);
+        //then
+        assertTrue(isDeliveryFree);
+    }
+
+    @Test
+    @ExtendWith(MockitoExtension.class)//do uzywania @Spy
+    void testSumPriceWithSpy() { //do zachowania czesci rpawdziej czesci mocka
+        //given
+        Meal meal2 = new Meal(14, 4, "Burrito");
+        Meal meal = spy(Meal.class);
+        Meal meal3 = spy(meal2);//do uzywania konstruktowa z wielona argumentami
+        given(meal.getPrice()).willReturn(15);
+        given(meal.getQuantity()).willReturn(3);
+        //when
+        int result = meal.sumPrice();
+        //then
+        then(meal).should().getPrice();
+        then(meal).should().getQuantity();//tylko dlatego moge bo jest to spy
+        assertThat(result, equalTo(45));
     }
 
     private int calculatePrice(int price, int quantity) {

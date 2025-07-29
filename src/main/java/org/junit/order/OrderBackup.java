@@ -1,4 +1,4 @@
-package org.junit;
+package org.junit.order;
 
 import java.io.BufferedWriter;
 import java.io.File;

@@ -1,4 +1,7 @@
-package org.junit;
+package org.junit.cart;
+
+import org.junit.Meal;
+import org.junit.order.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +10,7 @@ public class Cart {
 
     private List<Order> orders = new ArrayList<>();
 
-    void addOrderToCart(Order order) {
+   public void addOrderToCart(Order order) {
         this.orders.add(order);
     }
 

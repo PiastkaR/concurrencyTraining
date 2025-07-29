@@ -1,5 +1,7 @@
-package org.junit;
+package org.junit.account;
 
+import org.junit.account.Account;
+import org.junit.account.Address;
 import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;

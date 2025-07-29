@@ -24,6 +24,9 @@ public class Meal {
         this.name = name;
     }
 
+    public Meal() {
+    }
+
     public int getPrice() {
         return price;
     }
@@ -33,6 +36,10 @@ public class Meal {
             throw  new IllegalArgumentException("DiscountCannotBeHigherThanThPrice!");
         }
         return this.price - discount;
+    }
+
+    int sumPrice(){
+        return getPrice()*getQuantity();
     }
 
     @Override

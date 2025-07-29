@@ -1,14 +1,15 @@
-package org.junit;
+package org.junit.order;
 
+import org.junit.Meal;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.order.Order;
+import org.junit.order.OrderBackup;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class OrderBackupTest {
     private static OrderBackup orderBackup;

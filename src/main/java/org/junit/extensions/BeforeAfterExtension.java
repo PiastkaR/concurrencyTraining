@@ -1,4 +1,4 @@
-package org.junit;
+package org.junit.extensions;
 
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;

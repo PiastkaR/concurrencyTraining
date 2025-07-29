@@ -1,4 +1,4 @@
-package org.junit;
+package org.junit.account;
 
 public class Address {
 
