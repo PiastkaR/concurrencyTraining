@@ -1,4 +1,4 @@
-package org.junit;
+package org.junit.unit;
 
 import java.util.Objects;
 

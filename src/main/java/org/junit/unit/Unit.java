@@ -1,11 +1,17 @@
-package org.junit;
+package org.junit.unit;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Random;
 
 public class Unit {
     private static Random random = new Random();
+
+    public Coordinates getCoordinates() {
+        return coordinates;
+    }
 
     private Coordinates coordinates;
     private int fuel;
@@ -84,5 +90,33 @@ public class Unit {
 
     int getLoad() {
         return this.currentCargoWeight;
+    }
+
+    public class UnitService {
+
+        private CargoRepository cargoRepository = new CargoRepository();
+        private UnitRepository unitRepository = new UnitRepository();
+
+        void addCargoByName(Unit unit, String name) {
+
+            Optional<Cargo> cargo = cargoRepository.findCargoByName(name);
+
+            if (cargo.isPresent()) {
+                unit.loadCargo(cargo.get());
+            } else {
+                throw new NoSuchElementException("Unable to find cargo");
+            }
+        }
+
+        Unit getUnitOn(Coordinates coordinates) {
+
+            Unit u = unitRepository.getUnitByCoordinates(coordinates);
+
+            if (u == null) {
+                throw new NoSuchElementException("Unable to find any unit");
+            } else {
+                return u;
+            }
+        }
     }
 }

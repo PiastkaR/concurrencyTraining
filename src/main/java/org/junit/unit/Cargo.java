@@ -1,4 +1,4 @@
-package org.junit;
+package org.junit.unit;
 
 import java.util.Objects;
 
@@ -28,5 +28,9 @@ public class Cargo {
 
     int getWeight() {
         return weight;
+    }
+
+    public String getName() {
+        return name;
     }
 }

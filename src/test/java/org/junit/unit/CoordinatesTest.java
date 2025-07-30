@@ -1,6 +1,7 @@
-package org.junit;
+package org.junit.unit;
 
 import org.junit.jupiter.api.Test;
+import org.junit.unit.Coordinates;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
