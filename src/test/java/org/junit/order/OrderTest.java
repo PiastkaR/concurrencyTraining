@@ -1,13 +1,12 @@
 package org.junit.order;
 
 import org.hamcrest.MatcherAssert;
-import org.junit.Meal;
+import org.junit.meal.Meal;
 import org.junit.extensions.BeforeAfterExtension;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.order.Order;
 
 import java.util.Arrays;
 import java.util.List;

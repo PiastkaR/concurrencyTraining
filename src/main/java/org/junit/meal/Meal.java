@@ -1,4 +1,4 @@
-package org.junit;
+package org.junit.meal;
 
 import java.util.Objects;
 
@@ -65,5 +65,9 @@ public class Meal {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

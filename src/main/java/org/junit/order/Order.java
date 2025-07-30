@@ -1,6 +1,6 @@
 package org.junit.order;
 
-import org.junit.Meal;
+import org.junit.meal.Meal;
 
 import java.util.ArrayList;
 import java.util.List;

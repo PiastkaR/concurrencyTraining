@@ -1,4 +1,4 @@
-package org.junit;
+package org.junit.meal;
 
 import org.junit.cart.Cart;
 import org.junit.cart.CartHandler;
@@ -13,6 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.meal.Meal;
 import org.junit.order.Order;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
