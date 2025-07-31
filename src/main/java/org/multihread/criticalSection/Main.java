@@ -53,7 +53,7 @@ public class Main {
         Object lock = new Object();
 
         public void increment() {
-            synchronized (this.lock) {
+            synchronized (this.lock) {//WAŻNE odnosie sie do tej konkretnej isntacji obiektu dzieki temu jest thread-safe
                 items++;
             }
         }
