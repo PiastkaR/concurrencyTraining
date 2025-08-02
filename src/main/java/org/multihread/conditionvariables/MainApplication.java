@@ -1,4 +1,4 @@
-package org.multihread.conditionVariables;
+package org.multihread.conditionvariables;
 
 import java.io.File;
 import java.io.FileReader;
